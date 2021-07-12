@@ -1,0 +1,12 @@
+﻿
+CoInitialize
+CoCreateInstance
+CoUninitialize
+CoTaskMemFree
+
+CLSIDFromString
+
+IFELanguage
+FELANG_REQ_REV
+FELANG_CMODE_HIRAGANAOUT
+FELANG_CMODE_HALFWIDTHOUT

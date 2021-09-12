@@ -34,8 +34,30 @@ namespace Fixed
 			internal unsafe win32.Globalization.WDD* pWDD;
 			internal int cWDD;
 			internal unsafe void* pPrivate;
-			//internal char BLKBuff;      //generated code
-			internal unsafe void* BLKBuff;//fixed
+			internal __char_1 BLKBuff;
+
+			[StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)] // <-- add CharSet = CharSet.Unicode
+			internal struct __char_1
+			{
+				internal char _0;
+
+				/// <summary>Always <c>1</c>.</summary>
+				internal int Length => 1;
+
+				/// <summary>
+				/// Gets a ref to an individual element of the inline array.
+				/// ⚠ Important ⚠: When this struct is on the stack, do not let the returned reference outlive the stack frame that defines it.
+				/// </summary>
+				internal ref char this[int index] => ref AsSpan()[index];
+
+				/// <summary>
+				/// Gets this inline array as a span.
+				/// </summary>
+				/// <remarks>
+				/// ⚠ Important ⚠: When this struct is on the stack, do not let the returned span outlive the stack frame that defines it.
+				/// </remarks>
+				internal Span<char> AsSpan() => MemoryMarshal.CreateSpan(ref _0, 1);
+			}
 
 			[StructLayout(LayoutKind.Explicit, Pack = 1)]
 			internal partial struct _Anonymous1_e__Union
